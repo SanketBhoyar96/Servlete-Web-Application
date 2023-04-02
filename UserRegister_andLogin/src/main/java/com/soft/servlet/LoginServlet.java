@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -39,7 +40,7 @@ public class LoginServlet extends GenericServlet {
 			
 			ResultSet rs = ps.executeQuery();
 			
-
+           
 			if(rs.next()) {
 				pw.println("User login sucessfully..");
 				pw.println("Welcome::"+rs.getString(2));
@@ -47,9 +48,19 @@ public class LoginServlet extends GenericServlet {
 				req.setAttribute("userName", rs.getString(2));
 				req.setAttribute("userEmail", rs.getString(3));
 				
+//				  req.removeAttribute("userName");
 				
+				                           
+				RequestDispatcher rd = req.getRequestDispatcher("/test");    //servlet to servlet
+//				rd.forward(req, res);  //without loginservlet response
+				rd.include(req, res);   // with login dervlet response
+//				------------------------------------------------------------------------------------
+//				RequestDispatcher rd= req.getRequestDispatcher("dashboard.html");  //servlet to html 
+//				rd.forward(req, res);
 			}else {
 				pw.println("User not login sucessfully..");
+				RequestDispatcher rd = req.getRequestDispatcher("register.html");
+				rd.forward(req, res);
 			}
 			
 

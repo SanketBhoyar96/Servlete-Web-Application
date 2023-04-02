@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -45,8 +46,14 @@ public class RegisterUserServlet extends GenericServlet{
 			if(k>0) {
 				pw.println("User register sucessfully..");
 				//pw.println("<a href='login.html'>Login");
+				
+				RequestDispatcher rd = req.getRequestDispatcher("Login.html");
+				rd.forward(req, res);
 			}else {
 				pw.println("User not register sucessfully..");
+				
+				RequestDispatcher rd = req.getRequestDispatcher("register.html");
+				rd.forward(req, res);
 			}
 			
 

@@ -23,8 +23,8 @@ public class TestAttributeServlet extends GenericServlet{
 		String userName = (String) req.getAttribute("userName");
 		String userEmail = (String) req.getAttribute("userEmail");
 		
-		pw.println("userName"+userName);
-		pw.println("userEmail"+userEmail);
+		pw.println("userName::--"+userName);
+		pw.println("userEmail::--"+userEmail);
 		
 	}
 
