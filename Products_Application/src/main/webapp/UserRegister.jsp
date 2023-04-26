@@ -38,6 +38,7 @@
 </style>
 <body>
 
+
 	<div id="container">
 		<div id="containerchilds">
 			<h1>User Registration</h1>
